@@ -2,7 +2,9 @@
 
 const authenFBCheck = (option) => {
   try {
-    const firebaseUser = await admin.auth().verifyIdToken(option.authtoken);
+    const firebaseUser = await option.admin
+      .auth()
+      .verifyIdToken(option.authtoken);
     return firebaseUser;
   } catch (error) {
     res.status(401).json({
